@@ -1,0 +1,61 @@
+openapi: 3.0.1
+info:
+  title: Fetch OAB
+  version: '1.0'
+  description: API para consulta de dados de advogados no site da OAB.
+
+paths:
+  /fetch_oab:
+    post:
+      summary: Consulta dados de advogados pela OAB, nome, UF e tipo de inscrição
+      operationId: fetch_oab
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oab:
+                  type: string
+                  description: Número da OAB (opcional)
+                  example: "123456"
+                name:
+                  type: string
+                  description: Nome do advogado (mínimo 3 caracteres, opcional)
+                  minLength: 3
+                  example: "Fulano"
+                uf:
+                  type: string
+                  description: Sigla do estado brasileiro (ex: "SP", "MS", opcional)
+                  example: "SP"
+                tipo_inscricao:
+                  type: string
+                  description: Tipo de inscrição (1=advogado, 2=estagiário, 3=suplementar, opcional)
+                  pattern: "^[1-3]$"
+                  example: "1"
+              additionalProperties: false
+      responses:
+        '200':
+          description: Dados do advogado encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  oab:
+                    type: string
+                    example: "123456"
+                  nome:
+                    type: string
+                    example: "FULANO DE TAL"
+                  uf:
+                    type: string
+                    example: "SP"
+                  categoria:
+                    type: string
+                    example: "Advogado"
+                  situacao:
+                    type: string
+                    example: "Ativo"
+                    

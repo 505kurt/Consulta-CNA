@@ -1,0 +1,13 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Consulta OAB",
+  "name_for_model": "fetch_oab",
+  "description_for_model": "Consulta dados de advogados no site da OAB usando parâmetros como número da OAB, nome, UF e tipo de inscrição.",
+  "api": {
+    "type": "openapi",
+    "url": "http://localhost:8000/openapi.yaml"
+  },
+  "auth": {
+    "type": "none"
+  }
+}

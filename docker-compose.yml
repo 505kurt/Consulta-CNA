@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    command: python run_api.py
+    ports:
+      - '8000:8000'
+
+  agent:
+    build: .
+    command: python run_agent.py
+    stdin_open: true
+    tty: true
